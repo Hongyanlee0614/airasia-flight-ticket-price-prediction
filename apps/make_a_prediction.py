@@ -11,7 +11,6 @@ from matplotlib import rcParams
 # make sure the feature names in shap summary plot are displayed properly 
 rcParams.update({'figure.autolayout': True})
 # to display shap plot in the web app
-# matplotlib.use('TkAgg')
 
 shap.initjs()
 
@@ -207,15 +206,22 @@ def app():
         for i in pred:
             st.write("Your Fare Price is : RM" , round(i ,2)  , "")
             
+            explainer = shap.TreeExplainer(rfr_model)
+            shap_values = explainer.shap_values(par)
+            shap.summary_plot(shap_values, par, feature_names=['Stop', 'Departure Month', 'Departure Day',	'Departure Hour',	'Departure Minute',	'departure:Labuan',	'departure:Middle',	'departure:North,',	'departure:Sabah',	'departure:Sarawak',	'departure:South',	'destination:Labuan',	'destination:Middle',	'destination:North',	'destination:Sabah',	'destination:Sarawak'	,'destination:South'], max_display=7, title="Model Interpretation Plot")
+            
+            # disable warning
+            st.set_option('deprecation.showPyplotGlobalUse', False)
+            st.pyplot(bbox_inches='tight')
+            matplotlib.pyplot.clf()
+            
             # Interpretation of the prediction model
             st.subheader("Interpretation Plot")
             st.write("- This plot combines feature importance (how much weights are the variables on the prediction) with feature effects (what is the direction and strength of the variables on the prediction).")
             st.write("- All points belong to the same row of observations/instances. The vertical location shows what feature it is depicting. The horizontal location shows whether the value of the feature caused a greater or smaller prediction result.")
             st.write("- The features are ordered according to their importance from top to bottom. Here the plot shows the top 7 features affecting the prediction.")
             st.write("In the summary plot, we see first indications of the relationship between the value of a feature and the impact on the prediction. All effects describe the behavior of the model and are not necessarily causal in the real world.")
-            explainer = shap.TreeExplainer(rfr_model)
-            shap_values = explainer.shap_values(par)
-            shap.summary_plot(shap_values, par, feature_names=['Stop', 'Departure Month', 'Departure Day',	'Departure Hour',	'Departure Minute',	'departure:Labuan',	'departure:Middle',	'departure:North,',	'departure:Sabah',	'departure:Sarawak',	'departure:South',	'destination:Labuan',	'destination:Middle',	'destination:North',	'destination:Sabah',	'destination:Sarawak'	,'destination:South'], max_display=7, title="Model Interpretation Plot")
+            
             # Greeting message
             st.write("*Happy and Safe Journey ...*")
     st.write("""    """)
