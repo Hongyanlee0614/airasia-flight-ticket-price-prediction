@@ -17,7 +17,7 @@ def app():
     if st.sidebar.checkbox('Display Raw Data'):
         # raw data
         st.subheader("Raw Data")
-        st.write("Airasia flight information dataset from 24 October to XXX")
+        st.write("Airasia flight information dataset from 24 October 2021 to 31 December 2021")
         
         with st.spinner('Loading flights data...'):
             df_raw = pd.read_csv('Airasia Domestic Flight Tickets.csv')
