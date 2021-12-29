@@ -11,7 +11,7 @@ from matplotlib import rcParams
 # make sure the feature names in shap summary plot are displayed properly 
 rcParams.update({'figure.autolayout': True})
 # to display shap plot in the web app
-matplotlib.use('TkAgg')
+# matplotlib.use('TkAgg')
 
 shap.initjs()
 
