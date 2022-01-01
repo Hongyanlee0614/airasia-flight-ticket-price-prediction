@@ -219,7 +219,7 @@ def app():
             # Interpretation of the prediction model
             st.write("- This plot combines feature importance (how much weights are the variables on the prediction) with feature effects (what is the direction and strength of the variables on the prediction).")
             st.write("- All points belong to the same row of observations/instances. The vertical location shows what feature it is depicting. The horizontal location shows whether the value of the feature caused a greater or smaller prediction result.")
-            st.write("- The features are ordered according to their importance from top to bottom. Here the plot shows the top 7 features affecting the prediction.")
+            st.write("- The features are ordered according to their importances from top to bottom.")
             st.write("In the summary plot, we see first indications of the relationship between the value of a feature and the impact on the prediction. All effects describe the behavior of the model and are not necessarily causal in the real world.")
             
             # Greeting message
