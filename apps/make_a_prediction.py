@@ -208,7 +208,7 @@ def app():
             
             explainer = shap.TreeExplainer(rfr_model)
             shap_values = explainer.shap_values(par)
-            shap.summary_plot(shap_values, par, feature_names=['Stop', 'Departure Month', 'Departure Day',	'Departure Hour',	'Departure Minute',	'departure:Labuan',	'departure:Middle',	'departure:North,',	'departure:Sabah',	'departure:Sarawak',	'departure:South',	'destination:Labuan',	'destination:Middle',	'destination:North',	'destination:Sabah',	'destination:Sarawak'	,'destination:South'], max_display=7, title="Model Interpretation Plot")
+            shap.summary_plot(shap_values, par, feature_names=['Stop', 'Departure Location', 'Departure Destination', 'Departure Month', 'Departure Day', 'Departure Hour', 'Departure Minute'], max_display=7, title="Model Interpretation Plot")
             
             # disable warning
             st.subheader("Interpretation Plot")
